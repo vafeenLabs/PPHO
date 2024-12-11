@@ -6,16 +6,10 @@
 #include <functional>
 #include <future>
 #include <mutex>
+#include <cmath>
+#include <iomanip>
+#include <chrono>
 #include <condition_variable>
-
-enum Point
-{
-    FIBONACHI_CHOICE = 1,
-    FILE_WRITING_CHOICE,
-    EXIT_CHOICE,
-    DESCRIPTION_CHOICE,
-
-};
 
 // Класс ThreadPool для управления пулом потоков
 class ThreadPool
@@ -27,6 +21,7 @@ public:
     // Деструктор завершает работу потоков
     ~ThreadPool();
 
+    // Явно убираем операции копирования и конструктор копирования для избежания undefined behavior
     ThreadPool(const ThreadPool &) = delete;
     ThreadPool &operator=(const ThreadPool &) = delete;
     ThreadPool(ThreadPool &&) = delete;
